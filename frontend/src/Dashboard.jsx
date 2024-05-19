@@ -39,7 +39,7 @@ const Dashboard = () => {
     const handleAddEmployee = async () => {
         try {
             axios.defaults.withCredentials = true;
-            await axios.post('https://finaldashboard-api.vercel.app/employees', { name, position, department });
+            await axios.post('https://finaldashboard-ug97.onrender.com/employees', { name, position, department });
             setName('');
             setPosition('');
             setDepartment('');
@@ -52,7 +52,7 @@ const Dashboard = () => {
     const handleUpdateEmployee = async (id) => {
         try {
             axios.defaults.withCredentials = true;
-            await axios.put(`https://finaldashboard-api.vercel.app/employees/${id}`, { name, position, department });
+            await axios.put(`https://finaldashboard-ug97.onrender.com/employees/${id}`, { name, position, department });
             setName('');
             setPosition('');
             setDepartment('');
@@ -65,7 +65,7 @@ const Dashboard = () => {
     const handleDeleteEmployee = async (id) => {
         try {
             axios.defaults.withCredentials = true;
-            await axios.delete(`https://finaldashboard-api.vercel.app/employees/${id}`);
+            await axios.delete(`https://finaldashboard-ug97.onrender.com/employees/${id}`);
             fetchEmployees();
         } catch (error) {
             console.error('Error deleting employee:', error);
@@ -75,7 +75,7 @@ const Dashboard = () => {
     const handleLogout = async () => {
         try {
             axios.defaults.withCredentials = true;
-            await axios.post('https://finaldashboard-api.vercel.app/logout');
+            await axios.post('https://finaldashboard-ug97.onrender.com/logout');
             navigate('/');
         } catch (error) {
             console.error('Error logging out:', error);
