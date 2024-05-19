@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Axios from '../Config';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 export default function HomeF() {
     const [username, setUsername] = useState('');
@@ -8,7 +8,7 @@ export default function HomeF() {
 
     const handleSignUp = async () => {
         try {
-            const response = await Axios.post('/signup', {
+            const response = await axios.post('https://finaldashboard-api.vercel.app/signup', {
                 username,
                 password,
             });
