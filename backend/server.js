@@ -1,4 +1,5 @@
 const env = require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
@@ -6,17 +7,21 @@ const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
+const path = require("path");
 const app = express();
 app.use(express.json());
 
 app.use(cors({
-    origin: 'https://localhost:5173',
+    origin: ['https://finaldashboard-nine.vercel.app'],
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true
-}));
+}))
+//hello
+
 
 app.use(cookieParser());
 
+console.log('MongoDB_URI:', process.env.MONGODB_URI);
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => console.log('Connected to MongoDB'))
     .catch(err => console.error('Failed to connect to MongoDB', err));
@@ -65,7 +70,7 @@ app.post('/login', async (req, res) => {
     const user = await User.findOne({ username });
     if (user && bcrypt.compareSync(password, user.password)) {
         const token = jwt.sign({ userId: user._id }, 'secretkey', { expiresIn: '1h' });
-        res.cookie('token', token, { httpOnly: true, secure: process.env.NODE_ENV === 'production' });
+        res.cookie('token', token, { httpOnly: true, secure: false }); // Set secure: true in production
         res.status(200).send('Logged in successfully');
     } else {
         res.status(400).send('Invalid credentials');
@@ -100,6 +105,5 @@ app.delete('/employees/:id', authenticateToken, async (req, res) => {
     await Employee.findByIdAndDelete(id);
     res.send('Employee deleted');
 });
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+console.log(process.env.PORT);
+app.listen(process.env.PORT, () => console.log(`Server running on port ${process.env.PORT}`));
