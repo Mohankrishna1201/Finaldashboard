@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Axios from './Config';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Navbar, Container, Nav, Button, Form, Table } from 'react-bootstrap';
 
@@ -16,7 +16,7 @@ const Dashboard = () => {
 
     const fetchEmployees = async () => {
         try {
-            const response = await Axios.get('/employees');
+            const response = await axios.get('https://finaldashboard-api.vercel.app/employees');
             setEmployees(response.data);
         } catch (error) {
             if (error.response?.status === 403) {
@@ -37,7 +37,7 @@ const Dashboard = () => {
 
     const handleAddEmployee = async () => {
         try {
-            await Axios.post('/employees', { name, position, department });
+            await axios.post('https://finaldashboard-api.vercel.app/employees', { name, position, department });
             setName('');
             setPosition('');
             setDepartment('');
@@ -49,7 +49,7 @@ const Dashboard = () => {
 
     const handleUpdateEmployee = async (id) => {
         try {
-            await Axios.put(`/employees/${id}`, { name, position, department });
+            await axios.put(`https://finaldashboard-api.vercel.app/employees/${id}`, { name, position, department });
             setName('');
             setPosition('');
             setDepartment('');
@@ -61,7 +61,7 @@ const Dashboard = () => {
 
     const handleDeleteEmployee = async (id) => {
         try {
-            await Axios.delete(`/employees/${id}`);
+            await axios.delete(`https://finaldashboard-api.vercel.app/employees/${id}`);
             fetchEmployees();
         } catch (error) {
             console.error('Error deleting employee:', error);
@@ -70,7 +70,7 @@ const Dashboard = () => {
 
     const handleLogout = async () => {
         try {
-            await Axios.post('/logout');
+            await axios.post('https://finaldashboard-api.vercel.app/logout');
             navigate('/');
         } catch (error) {
             console.error('Error logging out:', error);
