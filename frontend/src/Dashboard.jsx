@@ -17,7 +17,7 @@ const Dashboard = () => {
     const fetchEmployees = async () => {
         try {
             axios.defaults.withCredentials = true;
-            const response = await axios.get('https://finaldashboard-api.vercel.app/employees');
+            const response = await axios.get('https://finaldashboard-ug97.onrender.com/employees');
             setEmployees(response.data);
         } catch (error) {
             if (error.response?.status === 403) {
