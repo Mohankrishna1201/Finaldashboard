@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import Axios from '../Config';
+import axios from 'axios';
+
 import { useNavigate } from 'react-router-dom';
 export default function HomeF() {
     const [username, setUsername] = useState('');
@@ -8,13 +9,13 @@ export default function HomeF() {
 
     const handleLogin = async () => {
         try {
-            const response = await Axios.post('/login', {
+            const response = await axios.post('https://finaldashboard-api.vercel.app/login', {
                 username,
                 password,
             });
             console.log(response.data);
             alert('logged in succesfully');// Handle success response (optional)
-            navigate('/dashboard')
+            navigate('https://finaldashboard-api.vercel.app/dashboard')
         } catch (error) {
             console.error(error); // Handle errors (optional)
             alert('invalid credentials');
@@ -23,7 +24,7 @@ export default function HomeF() {
     const handleSignup = async () => {
         try {
 
-            navigate('/signup')
+            navigate('https://finaldashboard-api.vercel.app/signup')
         } catch (error) {
             console.error(error); // Handle errors (optional)
         }
