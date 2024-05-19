@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Navbar, Container, Nav, Button, Form, Table } from 'react-bootstrap';
-axios.defaults.withCredentials = true;
+
 const Dashboard = () => {
     const [employees, setEmployees] = useState([]);
     const [name, setName] = useState('');
@@ -16,6 +16,7 @@ const Dashboard = () => {
 
     const fetchEmployees = async () => {
         try {
+            axios.defaults.withCredentials = true;
             const response = await axios.get('https://finaldashboard-api.vercel.app/employees');
             setEmployees(response.data);
         } catch (error) {
@@ -37,6 +38,7 @@ const Dashboard = () => {
 
     const handleAddEmployee = async () => {
         try {
+            axios.defaults.withCredentials = true;
             await axios.post('https://finaldashboard-api.vercel.app/employees', { name, position, department });
             setName('');
             setPosition('');
@@ -49,6 +51,7 @@ const Dashboard = () => {
 
     const handleUpdateEmployee = async (id) => {
         try {
+            axios.defaults.withCredentials = true;
             await axios.put(`https://finaldashboard-api.vercel.app/employees/${id}`, { name, position, department });
             setName('');
             setPosition('');
@@ -61,6 +64,7 @@ const Dashboard = () => {
 
     const handleDeleteEmployee = async (id) => {
         try {
+            axios.defaults.withCredentials = true;
             await axios.delete(`https://finaldashboard-api.vercel.app/employees/${id}`);
             fetchEmployees();
         } catch (error) {
@@ -70,6 +74,7 @@ const Dashboard = () => {
 
     const handleLogout = async () => {
         try {
+            axios.defaults.withCredentials = true;
             await axios.post('https://finaldashboard-api.vercel.app/logout');
             navigate('/');
         } catch (error) {
