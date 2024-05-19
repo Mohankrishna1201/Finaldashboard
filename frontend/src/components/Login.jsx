@@ -15,7 +15,7 @@ export default function HomeF() {
             });
             console.log(response.data);
             alert('logged in succesfully');// Handle success response (optional)
-            navigate('https://finaldashboard-api.vercel.app/dashboard')
+            navigate('/dashboard')
         } catch (error) {
             console.error(error); // Handle errors (optional)
             alert('invalid credentials');
@@ -24,7 +24,7 @@ export default function HomeF() {
     const handleSignup = async () => {
         try {
 
-            navigate('https://finaldashboard-api.vercel.app/signup')
+            navigate('/signup')
         } catch (error) {
             console.error(error); // Handle errors (optional)
         }
