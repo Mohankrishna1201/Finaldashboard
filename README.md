@@ -1,16 +1,21 @@
 # EMPLOYEE DASHBOARD
 
-
+## PREVIEW
 
 
 ## Table of contents (optional)
 
+- TECH STACK
 - LOGIN PAGE
 - SIGNUP PAGE
 - DASHBOARD
 - CRUD ON EMPLOYEE
 - INSTALLATION
 
+## TECH STACK
+### FRONTEND ->REACT
+### BACKEND  ->NODE,EXPRESS
+### DATABASE -> MONGODB
 ## LOGIN PAGE
 ![image](https://github.com/Mohankrishna1201/Finaldashboard/assets/121288107/1e594511-af1b-46ce-8b4d-60f1fad0c9d3)
 
