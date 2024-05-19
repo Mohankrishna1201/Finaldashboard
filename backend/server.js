@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 
 app.use(cors({
-    origin: 'https://finaldashboard-nine.vercel.app',
+    origin: ['https://finaldashboard-nine.vercel.app'],
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true
 }));
