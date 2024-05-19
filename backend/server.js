@@ -12,7 +12,7 @@ const app = express();
 app.use(express.json());
 
 app.use(cors({
-    origin: ['https://frontend-dashboard-00rs.onrender.com'],
+    origin: ['https://finaldashboard-1-frontend.onrender.com'],
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true
 }))
