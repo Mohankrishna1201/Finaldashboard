@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Navbar, Container, Nav, Button, Form, Table } from 'react-bootstrap';
-
+axios.defaults.withCredentials = true;
 const Dashboard = () => {
     const [employees, setEmployees] = useState([]);
     const [name, setName] = useState('');
