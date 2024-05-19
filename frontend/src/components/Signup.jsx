@@ -9,7 +9,7 @@ export default function HomeF() {
 
     const handleSignUp = async () => {
         try {
-            const response = await axios.post('https://finaldashboard-api.vercel.app/signup', {
+            const response = await axios.post('https://finaldashboard-ug97.onrender.com/signup', {
                 username,
                 password,
             });
