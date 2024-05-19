@@ -7,7 +7,7 @@ axios.defaults.withCredentials = true;
 
 
 const Axios = axios.create({
-    baseURL: 'https://finaldashboard-api.vercel.app',
+    baseURL: 'https://finaldashboard-ug97.onrender.com',
     withCredentials: true,
 
 });
