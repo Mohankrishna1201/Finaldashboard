@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 
 app.use(cors({
-    origin: 'https://finaldashboard-nine.vercel.app',
+    origin: ['https://finaldashboard-nine.vercel.app', 'https://finaldashboard-1-frontend.onrender.com'],
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true
 }));
@@ -65,7 +65,11 @@ app.post('/login', async (req, res) => {
     const user = await User.findOne({ username });
     if (user && bcrypt.compareSync(password, user.password)) {
         const token = jwt.sign({ userId: user._id }, 'secretkey', { expiresIn: '1h' });
-        res.cookie('token', token, { httpOnly: true, secure: process.env.NODE_ENV === 'production' });
+        res.cookie('token', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
+        });
         res.status(200).send('Logged in successfully');
     } else {
         res.status(400).send('Invalid credentials');
