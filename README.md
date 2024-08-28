@@ -36,10 +36,11 @@ https://github.com/Mohankrishna1201/Finaldashboard/assets/121288107/e4008a50-fad
 
 ## INSTALLATION FRONTEND
 CLONE--> cd frontend --> npm run dev
-
+https://finaldashboard-nine.vercel.app/
 
 ## INSTALLATION BACKEND
 
 CLONE--> cd backend --> nodemon server.js
+
 
 
